@@ -7,3 +7,7 @@ seaborn
 bokeh
 jupyterlab
 ipykernel
+tensorflow
+keras
+umap-learn
+plotly

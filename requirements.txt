@@ -11,3 +11,5 @@ tensorflow
 keras
 umap-learn
 plotly
+lightgbm
+xgboost

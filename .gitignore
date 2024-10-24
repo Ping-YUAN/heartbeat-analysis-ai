@@ -167,4 +167,5 @@ data/raw/*
 data/processed/*
 .DS_Store
 
+# models
 models/

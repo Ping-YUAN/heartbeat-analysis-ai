@@ -13,3 +13,5 @@ umap-learn
 plotly
 lightgbm
 xgboost
+shap
+lime

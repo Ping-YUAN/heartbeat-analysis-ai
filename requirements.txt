@@ -16,3 +16,6 @@ xgboost
 shap
 lime
 imblearn
+pydot
+graphviz
+pytype

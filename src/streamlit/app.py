@@ -12,6 +12,7 @@ import numpy as np
 
 processed_file_path = 'data/processed/'
 raw_file_path = 'data/raw/'
+asset_path = 'asset/'
 
 files = dict({
     'mit_train_raw':  raw_file_path + "mitbih_train.csv",
@@ -22,6 +23,21 @@ files = dict({
     'ptb_abnormal': raw_file_path + 'ptbdb_abnormal.csv',
     'ptb_train_clean': processed_file_path + 'ptb_train_clean.csv',
     'ptb_test_clean': processed_file_path + 'ptb_test_clean.csv'
+})
+
+images = dict({
+    'medical-cardio': asset_path + "medical-cardio.jpg",
+    'ecg': asset_path + "ECG.jpg",
+    'mit_ecg_signals': asset_path + "MIT_ECG_Signals.png",
+    'ptb_ecg_signals': asset_path + "PTB_ECG_Signals.png",
+    'pie_distribution_mit': asset_path + "pie_distribution_mit.png",
+    'pie_distribuiton_ptb': asset_path + "pie_distribution_PTB.png",
+    'mit_screeplot': asset_path + "MIT_screeplot.png",
+    'ptb_tsne': asset_path + "PTB_tsne.png",
+    'mit_tsne': asset_path + "MIT_tsne.png",
+    'ptb_pca_3d': asset_path + "PTB_PCA_3d.png",
+    'ptb_screeplot': asset_path + "PTB_screeplot.png",
+    'mit_pca': asset_path + "MIT_PCA.png"
 })
 
 
@@ -239,8 +255,8 @@ if page == "Project Overview":
         )
 
     with col2:
-        st.image("medical-cardio.jpg", use_container_width=True)
-        st.image("ECG.jpg", use_container_width=True)
+        st.image(images.get('medical-cardio'), use_container_width=True)
+        st.image(images.get('ecg'), use_container_width=True)
 
 
 if page == "Data Exploration":
@@ -404,10 +420,10 @@ if page == "Data Visualization":
 
         if dataset_option_ecg == "MIT Dataset":
             st.markdown("##### Figure 1: Raw ECG Signals for MIT Dataset")
-            st.image("MIT_ECG_Signals.png", width=600)
+            st.image(images.get('mit_ecg_signals'), width=600)
         elif dataset_option_ecg == "PTB Dataset":
             st.markdown("##### Figure 2: Raw normal and abnormal ECG Signals for PTB Dataset")
-            st.image("PTB_ECG_Signals.png", width=600)
+            st.image(images.get('ptb_ecg_signals'), width=600)
 
     with st.expander("The distribution of different heartbeat categories"):
         st.write(
@@ -427,12 +443,12 @@ if page == "Data Visualization":
             st.markdown(
                 "##### Figure 1: The distribution of different heartbeat categories for MIT Dataset"
             )
-            st.image("pie_distribution_mit.png", width=600)
+            st.image(images.get('pie_distribution_mit'), width=600)
         elif dataset_option_pie == "PTB Dataset":
             st.markdown(
                 "##### Figure 2: The distribution of different heartbeat categories for PTB Dataset"
             )
-            st.image("pie_distribution_PTB.png", width=600)
+            st.image(images.get('pie_distribution_ptb'), width=600)
             
     with st.expander("PCA Dimensionality Reduction"):
         st.write(
@@ -448,15 +464,15 @@ if page == "Data Visualization":
 
         if dataset_option_pca == "MIT Dataset":
             st.markdown("##### Scree Plot for MIT Dataset")
-            st.image("MIT_screeplot.png", width=400)
+            st.image(images.get('mit_screeplot'), width=400)
             st.markdown("##### PCA Visualization for MIT Dataset")
-            st.image("MIT_PCA.png", width=400)
+            st.image(images.get('mit_pca'), width=400)
             
         elif dataset_option_pca == "PTB Dataset":
             st.markdown("##### Scree Plot for PTB Dataset")
-            st.image("PTB_screeplot.png", width=400)
+            st.image(images.get('ptb_screeplot'), width=400)
             st.markdown("##### PCA Visualization for PTB Dataset")
-            st.image("PTB_PCA_3d.png", width=400)
+            st.image(images.get('ptb_pca_3d'), width=400)
     
     with st.expander("t-SNE Dimensionality Reduction"):
         st.write(
@@ -472,10 +488,10 @@ if page == "Data Visualization":
 
         if dataset_option_tsne == "MIT Dataset":
             st.markdown("##### t-SNE Visualization for MIT Dataset")
-            st.image("MIT_tsne.png", width=600)
+            st.image(images.get('mit_tsne'), width=600)
         elif dataset_option_tsne == "PTB Dataset":
             st.markdown("##### t-SNE Visualization for PTB Dataset")
-            st.image("PTB_tsne.png", width=600)
+            st.image(images.get('ptb_tsne'), width=600)
 
     
 

@@ -10,47 +10,61 @@ from sklearn.metrics import f1_score
 from sklearn.model_selection import StratifiedKFold
 import numpy as np
 
+processed_file_path = 'data/processed/'
+raw_file_path = 'data/raw/'
+
+files = dict({
+    'mit_train_raw':  raw_file_path + "mitbih_train.csv",
+    'mit_test_raw': raw_file_path + 'mitbih_test.csv',
+    'mit_train_clean': processed_file_path + 'mit_train_clean.csv',
+    'mit_test_clean': processed_file_path + 'mit_test_clean.csv',
+    'ptb_normal': raw_file_path + 'ptbdb_normal.csv',
+    'ptb_abnormal': raw_file_path + 'ptbdb_abnormal.csv',
+    'ptb_train_clean': processed_file_path + 'ptb_train_clean.csv',
+    'ptb_test_clean': processed_file_path + 'ptb_test_clean.csv'
+})
+
 
 # Caching raw data loading functions
 @st.cache_data
 def load_mit_train_data():
-    return pd.read_csv("mit_train.csv")
+    return pd.read_csv(files.get('mit_train_raw'))
 
 
 @st.cache_data
 def load_mit_test_data():
-    return pd.read_csv("mit_test.csv")
+    return pd.read_csv(files.get('mit_test_raw'))
 
 
 @st.cache_data
 def load_ptb_normal_data():
-    return pd.read_csv("ptb_normal.csv")
+    return pd.read_csv(files.get('ptb_normal'))
 
 
 @st.cache_data
 def load_ptb_abnormal_data():
-    return pd.read_csv("ptb_abnormal.csv")
+    return pd.read_csv(files.get('ptb_abnormal'))
 
 
 # Caching clean data loading functions
 @st.cache_data
 def load_mit_train_clean():
-    return pd.read_csv("mit_train_clean.csv")
+    return pd.read_csv(files.get('mit_train_clean'))
 
 
 @st.cache_data
 def load_mit_test_clean():
-    return pd.read_csv("mit_test_clean.csv")
+    return pd.read_csv( files.get('mit_test_clean'))
 
 
 @st.cache_data
 def load_ptb_train_clean():
-    return pd.read_csv("ptb_train_clean.csv")
+    return pd.read_csv( files.get('ptb_train_clean') )
 
 
 @st.cache_data
 def load_ptb_test_clean():
-    return pd.read_csv("ptb_test_clean.csv")
+    return pd.read_csv( files.get('ptb_test_clean') )
 
 
 # Load raw datasets

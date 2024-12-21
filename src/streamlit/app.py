@@ -186,7 +186,8 @@ pages = [
     "Data Exploration",
     "Data Visualization",
     "Data Preprocessing",
-    "Modeling & Evaluation",
+    "Data Shift",
+    "Modeling & Evaluation & Explanation",
     "Model Comparison",
     "Conclusion",
     "References",
@@ -673,6 +674,9 @@ if page == "Data Preprocessing":
             **Note:** After testing various combinations, we have found that MinMaxScaler works best for our dataset.
             """
         )
+
+if page == "Data Shift":
+      st.header("Data Shift")
 
 if page == "References":
     st.header("References")

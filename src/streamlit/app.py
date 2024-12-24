@@ -15,7 +15,12 @@ files = dict()
 images = dict()
 env_varaibles = os.environ
 
-if env_varaibles.get('ENV') == 'cloud':
+def is_community_cloud():
+    # Check if specific environment variable exists
+    return "STREAMLIT_SERVER_PORT" in os.environ
+
+
+if is_community_cloud():
     files = dict({
         'mit_train_raw': "https://drive.google.com/file/d/1T3UTg0gRkntMpXjZE-Ebkp8RaOLh3szS/view?usp=drive_link",
         'mit_test_raw': "https://drive.google.com/file/d/1cWBN7-koobKtTGgY2dlOaxKAqIaACEQp/view?usp=drive_link",

@@ -33,4 +33,4 @@ run notebooks under `notebooks`
 
 ### run streamlit app at port 8080
 
-run `streamlit run ./src/streamlit/app.py --server.port 8080`
+run `streamlit run ./src/streamlit/app.py --server.runOnSave true --server.port 8080`

@@ -9,23 +9,53 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import f1_score
 from sklearn.model_selection import StratifiedKFold
 import numpy as np
+import os 
 
-processed_file_path = 'data/processed/'
-raw_file_path = 'data/raw/'
-asset_path = 'asset/'
+files = dict()
+images = dict()
+env_varaibles = os.environ
 
-files = dict({
-    'mit_train_raw':  raw_file_path + "mitbih_train.csv",
-    'mit_test_raw': raw_file_path + 'mitbih_test.csv',
-    'mit_train_clean': processed_file_path + 'mit_train_clean.csv',
-    'mit_test_clean': processed_file_path + 'mit_test_clean.csv',
-    'ptb_normal': raw_file_path + 'ptbdb_normal.csv',
-    'ptb_abnormal': raw_file_path + 'ptbdb_abnormal.csv',
-    'ptb_train_clean': processed_file_path + 'ptb_train_clean.csv',
-    'ptb_test_clean': processed_file_path + 'ptb_test_clean.csv'
-})
+if env_varaibles.get('ENV') == 'cloud':
+    files = dict({
+        'mit_train_raw': "https://drive.google.com/file/d/1T3UTg0gRkntMpXjZE-Ebkp8RaOLh3szS/view?usp=drive_link",
+        'mit_test_raw': "https://drive.google.com/file/d/1cWBN7-koobKtTGgY2dlOaxKAqIaACEQp/view?usp=drive_link",
+        'mit_train_clean': "https://drive.google.com/file/d/1gzI5A4Nwdsh5oOgEE1DOxZ87pcqMkTtZ/view?usp=drive_link",
+        'mit_test_clean': "https://drive.google.com/file/d/1jZbvL7SN5z8QFQCAdaUn6VXfsL750vQj/view?usp=drive_link",
+        'ptb_normal': "https://drive.google.com/file/d/1WeP8YpNQpvAsi7rMpKBgwNheXVQQ-x_W/view?usp=drive_link",
+        'ptb_abnormal': "https://drive.google.com/file/d/1uwy8x7ykoR4dUzYlry9OnKD_CFwi8b1I/view?usp=drive_link",
+        'ptb_train_clean': "https://drive.google.com/file/d/1NtGaD_bZqTCOM1u81uCgLAWvcXePlJ-_/view?usp=drive_link",
+        'ptb_test_clean': "https://drive.google.com/file/d/15S6-WHziaAfoLspKg3sp7VUUairu_pf4/view?usp=drive_link"
+    })
+    images = dict({
+        'medical-cardio': "https://drive.google.com/file/d/1khsd1kkg-XQQonErKBbh0olEthBorAir/view?usp=drive_link",
+        'ecg': "https://drive.google.com/file/d/1O_PHLF9V8rG94_PKAvfo23OtRQFfDeU9/view?usp=drive_link",
+        'mit_ecg_signals': "https://drive.google.com/file/d/1Tqbbw-fSrBkwCqSkhYDBR8LePo7ojkYR/view?usp=drive_link",
+        'ptb_ecg_signals': "https://drive.google.com/file/d/1uZ1kG94IGIxCTZ8Q3ImskHVFSIGW-hwd/view?usp=drive_link",
+        'pie_distribution_mit': "https://drive.google.com/file/d/1T8XrjgGCvEMQzKrKB9tAPsj90O0mC8aV/view?usp=drive_link",
+        'pie_distribuiton_ptb': "https://drive.google.com/file/d/1P7SyBO0lc78sbUpV1rS2y9RIlyjzhCHV/view?usp=drive_link",
+        'mit_screeplot': "https://drive.google.com/file/d/1JqGUtFxDNVmwZDMB_Fzs_FJONdR5vUs7/view?usp=drive_link",
+        'ptb_tsne': "https://drive.google.com/file/d/1FnMMxEUj71U_gwqn90wgV1R41xQYKIX0/view?usp=drive_link",
+        'mit_tsne': "https://drive.google.com/file/d/1WoeYOLJeqDNkoonE6LqwUok2u4kvuPna/view?usp=drive_link",
+        'ptb_pca_3d': "https://drive.google.com/file/d/1wtlcTLlMNo5CBTAMCEhNypmcWFuuy3yp/view?usp=drive_link",
+        'ptb_screeplot': "https://drive.google.com/file/d/1OON6L-7DRoCGnbnVdKWvjFSm0AEMDh3h/view?usp=drive_link",
+        'mit_pca': "https://drive.google.com/file/d/1o0OStIN1-AWyOW3HeBskELwnl8RzEgEw/view?usp=drive_link"
+    })
+else:
+    processed_file_path = 'data/processed/'
+    raw_file_path = 'data/raw/'
+    asset_path = 'asset/'
 
-images = dict({
+    files = dict({
+        'mit_train_raw':  raw_file_path + "mitbih_train.csv",
+        'mit_test_raw': raw_file_path + 'mitbih_test.csv',
+        'mit_train_clean': processed_file_path + 'mit_train_clean.csv',
+        'mit_test_clean': processed_file_path + 'mit_test_clean.csv',
+        'ptb_normal': raw_file_path + 'ptbdb_normal.csv',
+        'ptb_abnormal': raw_file_path + 'ptbdb_abnormal.csv',
+        'ptb_train_clean': processed_file_path + 'ptb_train_clean.csv',
+        'ptb_test_clean': processed_file_path + 'ptb_test_clean.csv'
+    })
+    images = dict({
     'medical-cardio': asset_path + "medical-cardio.jpg",
     'ecg': asset_path + "ECG.jpg",
     'mit_ecg_signals': asset_path + "MIT_ECG_Signals.png",
@@ -38,7 +68,8 @@ images = dict({
     'ptb_pca_3d': asset_path + "PTB_PCA_3d.png",
     'ptb_screeplot': asset_path + "PTB_screeplot.png",
     'mit_pca': asset_path + "MIT_PCA.png"
-})
+    })
+
 
 
 # Caching raw data loading functions
@@ -187,8 +218,8 @@ pages = [
     "Data Visualization",
     "Data Preprocessing",
     "Data Shift",
-    "Modeling & Evaluation & Explanation",
-    "Model Comparison",
+    "Modeling & Evaluation",
+    "Modeling Demo & Interpretability"
     "Conclusion",
     "References",
 ]
@@ -678,21 +709,28 @@ if page == "Data Preprocessing":
 if page == "Data Shift":
       st.header("Data Shift")
 
-if page == "References":
-    st.header("References")
-    st.write(
-        """
-        Here are the references used in this project:
-        1. [GitHub: Heartbeat Analysis AI](https://github.com/Ping-YUAN/heartbeat-analysis-ai)
-        2. [Kaggle: Heartbeat Dataset](https://www.kaggle.com/datasets/shayanfazeli/heartbeat)
-        3. Mark RG, Schluter PS, Moody GB, Devlin, PH, Chernoff, D. (1982). An annotated ECG database for evaluating arrhythmia detectors. IEEE Transactions on Biomedical Engineering, 29(8), 600.
-        4. Moody GB, Mark RG. (1990). The MIT-BIH Arrhythmia Database on CD-ROM and software for use with it. Computers in Cardiology, 17, 185-188.
-        5. Moody GB, Mark RG. (2001). The impact of the MIT-BIH Arrhythmia Database. IEEE Engineering in Medicine and Biology, 20(3), 45-50. (PMID: 11446209)
-        6. Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation [Online]. 101(23), e215–e220.
-        
-    """
-    )
+      # explain how to process the data shift and why. 
+      # add link for a more reasonable way to do that
 
+if page == "Modeling & Evaluation":
+      st.header("Modeling & Evaluation")
+      # only text and image table to demostrate that
+      # multiple classification model created and evaluated. 
+      # which one will be used for demo
+      # binary classification model create and evaluated.
+      # which one will be used for demo.
+
+if page == "Modeling Demo & Interpretability":
+      st.header("Modeling Demo & Interpretability")
+
+      # load model 
+      # load the pipeline for preprocessing 
+      # load test datasets for demo
+
+      # let user choose one sample data from test datasets 
+      # visualize the ecg signal and the target 
+      # predict with model we choose. 
+      # result and interpretability analysis with lime. compare to the shap. 
 
 if page == "Conclusion":
     st.header("Conclusion")
@@ -729,5 +767,20 @@ if page == "Conclusion":
     st.write(
         """
     Overall, our results show promising efficacy of these techniques to improve diagnostic accuracy and possibly help in early diagnosis of cardiac anomalies. Supported by expert mentorship, our group work has resulted in detailed discussions and encouraging outcomes that could serve as groundwork for further research on medical diagnosis.
+    """
+    )
+
+if page == "References":
+    st.header("References")
+    st.write(
+        """
+        Here are the references used in this project:
+        1. [GitHub: Heartbeat Analysis AI](https://github.com/Ping-YUAN/heartbeat-analysis-ai)
+        2. [Kaggle: Heartbeat Dataset](https://www.kaggle.com/datasets/shayanfazeli/heartbeat)
+        3. Mark RG, Schluter PS, Moody GB, Devlin, PH, Chernoff, D. (1982). An annotated ECG database for evaluating arrhythmia detectors. IEEE Transactions on Biomedical Engineering, 29(8), 600.
+        4. Moody GB, Mark RG. (1990). The MIT-BIH Arrhythmia Database on CD-ROM and software for use with it. Computers in Cardiology, 17, 185-188.
+        5. Moody GB, Mark RG. (2001). The impact of the MIT-BIH Arrhythmia Database. IEEE Engineering in Medicine and Biology, 20(3), 45-50. (PMID: 11446209)
+        6. Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation [Online]. 101(23), e215–e220.
+        
     """
     )

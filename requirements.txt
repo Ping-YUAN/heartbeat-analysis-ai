@@ -19,3 +19,4 @@ imblearn
 pydot
 graphviz
 pytype
+watchdog

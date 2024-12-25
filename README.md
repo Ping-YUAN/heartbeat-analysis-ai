@@ -1,10 +1,15 @@
-# Project Name
+# Heartbeat Analysis
 
-This repo is a Starting Pack for DS projects. You can rearrange the structure to make it fits your project.
+This repo is a project for heartbeat classification.
 
-To understand the file structure check [Project Organization](./organization.md).
+The datasets we used come from [mit](https://www.physionet.org/physiobank/database/mitdb/) and [ptb](https://www.physionet.org/physiobank/database/ptbdb/).
+We trained several model with classical machine learning and deep learning model to classifique the normal and abormal even multiple classification.
 
-The dataset comes from kaggle [here](https://www.kaggle.com/datasets/shayanfazeli/heartbeat/data).
+You can find our [streamlit app](https://heartbeat-analysis-ai.streamlit.app/) to get more information
+
+## How to run this project
+
+The datasets come from [kaggle](https://www.kaggle.com/datasets/shayanfazeli/heartbeat/data).
 
 To run this project, you need to download those 4 files, and put them under `data/raw` folder with the original name.
 
@@ -15,22 +20,14 @@ Recoomand intercepter version is: 3.10.14
 or
 `pip install -r requirements.txt`
 
-## Streamlit app
+Then you can check the files under the folder `notebooks`, there are notebooks for data inspect/preprocessing/modeling/explanation.
 
-To run our streamlit app you need to prepare the data.
+## File structure
 
-### download the source file from kaggle
+To understand the file structure check [Project Organization](./organization.md).
 
-Download ecg dataset from kaggles. They should be named as `mitbih_test.csv` `mitbih_train.csv` `ptbdb_normal.csv` `ptbdb_abnormal.csv`.
+### run streamlit app on local at port 8080
 
-Move those files into the folder `data/raw`.
-
-### excute notebooks to generate processed dataset.
-
-run notebooks under `notebooks`  
-`preprocessing_ptb_clean.ipynb`  
-`preprocessing_mit_clean.ipynb`
-
-### run streamlit app at port 8080
+To run our streamlit app on local.
 
 run `streamlit run ./src/streamlit/app.py --server.runOnSave true --server.port 8080`

@@ -11,14 +11,14 @@ You can find our [streamlit app](https://heartbeat-analysis-ai.streamlit.app/) t
 
 The datasets come from [kaggle](https://www.kaggle.com/datasets/shayanfazeli/heartbeat/data).
 
-To run this project, you need to download those 4 files, and put them under `data/raw` folder with the original name.
+To run this project, you need to download those 4 files, and put them under `data/raw`(create if folder doesn't exist) folder with the original name.
 
 Recommand using conda to management the enviorment,
 
-Recoomand intercepter version is: 3.10.14
-`conda install --yes --file requirements.txt`
-or
-`pip install -r requirements.txt`
+Recoomand intercepter version is: 3.11.5(We run with this version, you can use any newer version)   
+`conda install --yes --file requirements.txt`   
+or   
+`pip install -r requirements.txt`   
 
 Then you can check the files under the folder `notebooks`, there are notebooks for data inspect/preprocessing/modeling/explanation.
 
@@ -26,7 +26,7 @@ Then you can check the files under the folder `notebooks`, there are notebooks f
 
 To understand the file structure check [Project Organization](./organization.md).
 
-### run streamlit app on local at port 8080
+## Run streamlit app on local at port 8080
 
 To run our streamlit app on local.
 

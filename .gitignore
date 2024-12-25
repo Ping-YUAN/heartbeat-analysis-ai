@@ -164,9 +164,9 @@ cython_debug/
 .vscode/
 
 # Data folder
-# data/raw/*
-# data/processed/*
+data/raw/*
+data/processed/*
 .DS_Store
 
 # models
-# models/
+models/

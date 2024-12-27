@@ -53,64 +53,6 @@ def show_page():
         # Example code for splitting the data
         # st.write(f"MIT Training set size: {X_train_mit.shape[0]}")
         # st.write(f"MIT Test set size: {X_test_mit.shape[0]}")
-
-    with st.expander("Resampling Results"):
-        st.write(
-            """
-            Below are the mean F1-scores for different combinations of resampling methods and models applied to the MIT dataset.
-            """
-        )
-
-        # Creating the table for resampling results with highlighted cell
-        st.markdown(
-            """
-            <table>
-                <thead>
-                    <tr>
-                        <th>Method</th>
-                        <th>SMOTE</th>
-                        <th>OverSampling</th>
-                        <th>UnderSampling</th>
-                        <th>None</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>LogisticRegression</td>
-                        <td>0.408</td>
-                        <td>0.408</td>
-                        <td>0.407</td>
-                        <td>0.408</td>
-                    </tr>
-                    <tr>
-                        <td>Decision Tree</td>
-                        <td>0.760</td>
-                        <td>0.788</td>
-                        <td>0.626</td>
-                        <td>0.781</td>
-                    </tr>
-                    <tr>
-                        <td>KNN</td>
-                        <td>0.824</td>
-                        <td class="highlight">0.835</td>
-                        <td>0.752</td>
-                        <td>0.835</td>
-                    </tr>
-                </tbody>
-            </table>
-            """, unsafe_allow_html=True
-        )
-
-        st.write(
-            """
-            **Benefits of Resampling:**
-            - Resampling methods such as SMOTE, Oversampling, and Undersampling help address class imbalance in the dataset, which can improve the model's ability to generalize and avoid bias towards the majority class.
-            - It is generally advisable to apply resampling methods before rescaling to avoid introducing bias during the scaling process.
-
-            **Note:** After testing various combinations, we have found that Oversampling works best for our dataset.
-            """
-        )
-
     with st.expander("Rescaling Results"):
         st.write(
             """
@@ -168,4 +110,62 @@ def show_page():
             """
         )
         
+    with st.expander("Resampling Results"):
+        st.write(
+            """
+            Below are the mean F1-scores for different combinations of resampling methods and models applied to the MIT dataset.
+            """
+        )
+
+        # Creating the table for resampling results with highlighted cell
+        st.markdown(
+            """
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>SMOTE</th>
+                        <th>OverSampling</th>
+                        <th>UnderSampling</th>
+                        <th>None</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LogisticRegression</td>
+                        <td>0.408</td>
+                        <td>0.408</td>
+                        <td>0.407</td>
+                        <td>0.408</td>
+                    </tr>
+                    <tr>
+                        <td>Decision Tree</td>
+                        <td>0.760</td>
+                        <td>0.788</td>
+                        <td>0.626</td>
+                        <td>0.781</td>
+                    </tr>
+                    <tr>
+                        <td>KNN</td>
+                        <td>0.824</td>
+                        <td class="highlight">0.835</td>
+                        <td>0.752</td>
+                        <td>0.835</td>
+                    </tr>
+                </tbody>
+            </table>
+            """, unsafe_allow_html=True
+        )
+
+        st.write(
+            """
+            **Benefits of Resampling:**
+            - Resampling methods such as SMOTE, Oversampling, and Undersampling help address class imbalance in the dataset, which can improve the model's ability to generalize and avoid bias towards the majority class.
+            - It is generally advisable to apply resampling methods before rescaling to avoid introducing bias during the scaling process.
+
+            **Note:** After testing various combinations, we have found that Oversampling works best for our dataset.
+            """
+        )
+
+
 # show_page()

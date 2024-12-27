@@ -45,7 +45,8 @@ images = dict({
 'mit_tsne': asset_path + "MIT_tsne.png",
 'ptb_pca_3d': asset_path + "PTB_PCA_3d.png",
 'ptb_screeplot': asset_path + "PTB_screeplot.png",
-'mit_pca': asset_path + "MIT_PCA.png"
+'mit_pca': asset_path + "MIT_PCA.png",
+'mit_binary_shift_shap': asset_path + "mit_binary_shift_shap.png"
 })
 
 st.session_state.images = images

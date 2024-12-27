@@ -7,3 +7,5 @@ def show_page():
       # which one will be used for demo
       # binary classification model create and evaluated.
       # which one will be used for demo.
+      
+    st.image(st.session_state.images.get('mit_binary_shift_shap'), use_container_width=True)

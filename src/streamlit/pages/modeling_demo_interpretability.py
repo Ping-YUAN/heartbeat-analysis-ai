@@ -58,8 +58,8 @@ def predict_proba_wrapper(data):
   return np.column_stack([1 - predictions, predictions])
   
 def show_model_interpretability(data, y):
-  X_train = mit_train_data.drop('target', axis=1)
-  y_train = mit_train_data['target']
+  X_train = mit_train_data.head().drop('target', axis=1)
+  y_train = mit_train_data.head()['target']
   explainer = lime.lime_tabular.LimeTabularExplainer(
     training_data=np.array(X_train),
     training_labels=np.array(y_train),

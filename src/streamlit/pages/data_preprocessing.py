@@ -5,7 +5,7 @@ def show_page():
 
     st.write(
         """
-        In this section, we focus on the MIT dataset for our data preprocessing steps.
+        Starting from this section, we focus on the MIT dataset for our data preprocessing/modeling/demo.
         We have chosen to focus on the MIT dataset due to its comprehensive representation and relevance to our study.
         """
     )

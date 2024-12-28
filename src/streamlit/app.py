@@ -36,6 +36,7 @@ else:
 images = dict({
 'medical-cardio': asset_path + "medical-cardio.jpg",
 'ecg': asset_path + "ECG.jpg",
+'ecg-model': asset_path + 'ecg-model.png',
 'mit_ecg_signals': asset_path + "MIT_ECG_Signals.png",
 'ptb_ecg_signals': asset_path + "PTB_ECG_Signals.png",
 'pie_distribution_mit': asset_path + "pie_distribution_mit.png",

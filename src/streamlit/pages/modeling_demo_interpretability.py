@@ -93,11 +93,23 @@ def show_model_interpretability(data, y):
   
 def show_page():    
     st.header("Modeling Demo & Interpretability")
+    st.markdown(
+      """
+      Based on the modeling part, we will demo the model targeted to **binary classification** with the **data shift** applied. 
+      You can find the visualization for raw and shifted below for a given sample.   
+      Then you will get the prediction with the model we have trained with **Convolutional Nerural Netowork**   
+      Finaly you can check the **interpretability of the sample data** that you choosed.   
+      (ps: As data shift is to align R peak around to c_87 column,   
+      you can check the important feature based on the shift chart and the Morphology of a normal ECG to know which period may lead to the model predict as abnormal. )
+      """)
     st.write('## test data overview ')
     columns = list(mit_test_data.columns)
     data_reordered = mit_test_data[[columns[-1]] + columns[:-1]]
     data_reordered['target'] = data_reordered['target'].map(all_class_mapping)
-    st.dataframe(data_reordered)
+    # Show raw ecg signal in table
+    show_ecg_raw_table = st.checkbox("Show ECG raw signal in table")
+    if show_ecg_raw_table:
+      st.dataframe(data_reordered)
     selected_data = st.selectbox(
         "Select an sample data:",
         options= [ f"{mit_test_data_idx}-{ 'Normal' if mit_test_data.iloc[mit_test_data_idx]['target'] < 1 else 'Abnoraml'}-{ getHeartBeatReadableClass( mit_test_data.iloc[mit_test_data_idx]['target'])}"  for mit_test_data_idx in  mit_test_data.index.tolist()  ]  # Convert index to list for the dropdown
@@ -131,13 +143,19 @@ def show_page():
         ax.set_xlabel( all_class_mapping.get(selected_row['target']) )
         ax.set_ylabel("ECG signal 125hz")
         st.pyplot(fig)
+      # show normal ecg signal
+      show_normal_ecg = st.checkbox('Show normal ecg signal')
+      if show_normal_ecg:
+         st.image(st.session_state.images.get('ecg-model'), width=400)
       predict_result = mitModel.predict(X_test)[0, 0]
       predict_rounded_probability = "{:.2f}".format(round(predict_result * 100, 2) if predict_result > 0.5 else round((1 - predict_result)* 100, 2))
       st.write(f"predicted result: {'Abnormal' if predict_result > 0.5 else 'Normal' } ({ predict_rounded_probability }%)")
       st.write('real result:', 'Abornmal' if y_test > 0 else 'Normal')
     
-      st.write('## Interpretability of the data ')
-      
-      show_model_interpretability(X_test, y_test)
+      # Show interpretability chart 
+      show_interpretability_plot = st.checkbox("Show interpretability of sample data")
+      if show_interpretability_plot : 
+        st.write('## Interpretability of the data ')  
+        show_model_interpretability(X_test, y_test)
 
 # show_page()

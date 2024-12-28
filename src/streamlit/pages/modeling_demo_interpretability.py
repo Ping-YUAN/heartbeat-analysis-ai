@@ -120,11 +120,17 @@ def show_page():
     if selected_index > -1:
       selected_row = mit_test_data.loc[selected_index]  # Retrieve the corresponding row
       st.write(f"### Selected Heartbeat type: {'Abnormal' if selected_row['target'] > 0 else 'Normal'} ({getHeartBeatReadableClass(selected_row['target'])})")
+      
       mitModel = MitModelShiftWrapper(binary_model)
       single_ecg = mit_test_data.iloc[selected_index]
       X_test = single_ecg.drop('target')
       y_test = single_ecg['target']
-      X_test_shifted = shift_row(X_test)
+      predict_result = mitModel.predict(X_test)[0, 0]
+      predict_rounded_probability = "{:.2f}".format(round(predict_result * 100, 2) if predict_result > 0.5 else round((1 - predict_result)* 100, 2))
+      st.write(f"predicted result: {'Abnormal' if predict_result > 0.5 else 'Normal' } ({ predict_rounded_probability }%)")
+      st.write('real result:', 'Abornmal' if y_test > 0 else 'Normal')
+    
+      
       # Show raw signal in chart
       show_raw_plot = st.checkbox("Show raw ECG signal in chart")
       if show_raw_plot: 
@@ -134,24 +140,23 @@ def show_page():
         ax.set_xlabel( all_class_mapping.get(selected_row['target']) )
         ax.set_ylabel("ECG signal 125hz")
         st.pyplot(fig)
+        
       # Show shifted signal in chart
       show_shifted_plot = st.checkbox("Show shifted ECG signal in chart")
       if show_shifted_plot:
+        X_test_shifted = shift_row(X_test)
         fig, ax = plt.subplots()
         ax.plot(mit_test_data.columns[: len(mit_test_data.columns) - 1], X_test_shifted)
         ax.set_xticklabels([])
         ax.set_xlabel( all_class_mapping.get(selected_row['target']) )
         ax.set_ylabel("ECG signal 125hz")
         st.pyplot(fig)
+        
       # show normal ecg signal
       show_normal_ecg = st.checkbox('Show normal ecg signal')
       if show_normal_ecg:
          st.image(st.session_state.images.get('ecg-model'), width=400)
-      predict_result = mitModel.predict(X_test)[0, 0]
-      predict_rounded_probability = "{:.2f}".format(round(predict_result * 100, 2) if predict_result > 0.5 else round((1 - predict_result)* 100, 2))
-      st.write(f"predicted result: {'Abnormal' if predict_result > 0.5 else 'Normal' } ({ predict_rounded_probability }%)")
-      st.write('real result:', 'Abornmal' if y_test > 0 else 'Normal')
-    
+
       # Show interpretability chart 
       show_interpretability_plot = st.checkbox("Show interpretability of sample data")
       if show_interpretability_plot : 

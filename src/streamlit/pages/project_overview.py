@@ -1,6 +1,7 @@
 import streamlit as st
 
-def show_page(): 
+
+def show_page():
     st.header("Project Overview")
     # Layout to place images at the corner
     col1, col2 = st.columns([3, 1])
@@ -61,7 +62,10 @@ def show_page():
         )
 
     with col2:
-        st.image(st.session_state.images.get('medical-cardio'), use_container_width=True)
-        st.image(st.session_state.images.get('ecg'), use_container_width=True)
+        st.image(
+            st.session_state.images.get("medical-cardio"), use_container_width=True
+        )
+        st.image(st.session_state.images.get("ecg"), use_container_width=True)
+
 
 # show_page()

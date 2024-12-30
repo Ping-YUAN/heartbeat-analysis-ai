@@ -1,65 +1,77 @@
 import streamlit as st
-import pandas as pd 
+import pandas as pd
 from pathlib import Path
-import os 
+import os
 
-dataset_name = dict({
-    'mit_train': 'MIT Train',
-    'mit_test': 'MIT Test',
-    'ptb_normal': 'PTB Normal',
-    'ptb_abnormal': 'PTB Abnormal'
-})
+dataset_name = dict(
+    {
+        "mit_train": "MIT Train",
+        "mit_test": "MIT Test",
+        "ptb_normal": "PTB Normal",
+        "ptb_abnormal": "PTB Abnormal",
+    }
+)
+
+
 # Function to explore selected dataset
 def explore_dataset(dataset_name_param):
     st.write(f"### {dataset_name_param} Dataset")
-    if(dataset_name_param == dataset_name.get('mit_train')):
+    if dataset_name_param == dataset_name.get("mit_train"):
         st.write("Number of records: 87553")
         st.write("Number of columns: 188")
-    elif(dataset_name_param == dataset_name.get('mit_test')):
+    elif dataset_name_param == dataset_name.get("mit_test"):
         st.write("Number of records: 21892")
         st.write("Number of columns: 188")
-    elif(dataset_name_param == dataset_name.get('ptb_normal')):
+    elif dataset_name_param == dataset_name.get("ptb_normal"):
         st.write("Number of records: 4046")
         st.write("Number of columns: 188")
-    elif(dataset_name_param == dataset_name.get('ptb_abnormal')):
+    elif dataset_name_param == dataset_name.get("ptb_abnormal"):
         st.write("Number of records: 10506")
         st.write("Number of columns: 188")
 
     st.write("Sample data:")
     sample_data = None
-   
+
     current_dir = Path(__file__).parent
     # file_path =
-    if dataset_name_param == dataset_name.get('mit_train'):
-        sample_data = pd.read_csv(os.path.join(current_dir, "../sample", "mit_train.csv"))
-    elif dataset_name_param == dataset_name.get('mit_test'):
-        sample_data = pd.read_csv(os.path.join(current_dir, "../sample", "mit_test.csv"))
-    elif dataset_name_param == dataset_name.get('ptb_normal'):
-        sample_data = pd.read_csv(os.path.join(current_dir, "../sample", "ptb_normal.csv"))
-    elif dataset_name_param == dataset_name.get('ptb_abnormal'):
-        sample_data = pd.read_csv(os.path.join(current_dir, "../sample", "ptb_abnormal.csv"))
+    if dataset_name_param == dataset_name.get("mit_train"):
+        sample_data = pd.read_csv(
+            os.path.join(current_dir, "../sample", "mit_train.csv")
+        )
+    elif dataset_name_param == dataset_name.get("mit_test"):
+        sample_data = pd.read_csv(
+            os.path.join(current_dir, "../sample", "mit_test.csv")
+        )
+    elif dataset_name_param == dataset_name.get("ptb_normal"):
+        sample_data = pd.read_csv(
+            os.path.join(current_dir, "../sample", "ptb_normal.csv")
+        )
+    elif dataset_name_param == dataset_name.get("ptb_abnormal"):
+        sample_data = pd.read_csv(
+            os.path.join(current_dir, "../sample", "ptb_abnormal.csv")
+        )
     st.write(sample_data.head())
 
     show_missing = st.checkbox("Show total number of missing values")
     if show_missing:
-        if dataset_name_param == dataset_name.get('mit_train'):
+        if dataset_name_param == dataset_name.get("mit_train"):
             st.write("Missing values in MIT Train Dataset: 0")
-        elif dataset_name_param == dataset_name.get('mit_test'):
+        elif dataset_name_param == dataset_name.get("mit_test"):
             st.write("Missing values in MIT Test Dataset: 0")
-        elif dataset_name_param == dataset_name.get('ptb_normal'):
+        elif dataset_name_param == dataset_name.get("ptb_normal"):
             st.write("Missing values in PTB Normal Dataset: 0")
-        elif dataset_name_param == dataset_name.get('ptb_abnormal'):
+        elif dataset_name_param == dataset_name.get("ptb_abnormal"):
             st.write("Missing values in PTB Abnormal Dataset: 0")
 
     show_duplicate = st.checkbox("Show number of duplicated rows")
     if show_duplicate:
-        if dataset_name_param == dataset_name.get('mit_train'):
+        if dataset_name_param == dataset_name.get("mit_train"):
             st.write("Total number of duplicated rows: 0")
-        elif dataset_name_param == dataset_name.get('mit_test'):
+        elif dataset_name_param == dataset_name.get("mit_test"):
             st.write("Total number of duplicated rows: 0")
-        elif dataset_name_param == dataset_name.get('ptb_normal'):
+        elif dataset_name_param == dataset_name.get("ptb_normal"):
             st.write("Total number of duplicated rows: 1")
-        elif dataset_name_param == dataset_name.get('ptb_abnormal'):
+        elif dataset_name_param == dataset_name.get("ptb_abnormal"):
             st.write("Total number of duplicated rows: 6")
 
     # Summary information based on dataset selection
@@ -131,6 +143,7 @@ def explore_dataset(dataset_name_param):
             """
             )
 
+
 def show_page():
     st.header("Data Exploration")
 
@@ -163,9 +176,14 @@ def show_page():
     # Dataset Selection
     dataset_option = st.selectbox(
         "Select a dataset to explore",
-        (dataset_name.get('mit_train'), dataset_name.get('mit_test'), dataset_name.get('ptb_normal'), dataset_name.get('ptb_abnormal')),
+        (
+            dataset_name.get("mit_train"),
+            dataset_name.get("mit_test"),
+            dataset_name.get("ptb_normal"),
+            dataset_name.get("ptb_abnormal"),
+        ),
     )
-    
+
     explore_dataset(dataset_option)
 
     # if dataset_option == dataset_name.get('mit_train'):

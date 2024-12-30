@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 def show_page():
     st.header("Data Shift")
     st.write("## Why we want to shift data during preprocessing")
@@ -16,7 +17,7 @@ def show_page():
         * Legal(risk assessment)/Customer Service(churn prediction)  etc...   
         """
     )
-    
+
     st.markdown(
         """
         Heartbeat analysis is in the **healthcare area**.   
@@ -26,9 +27,9 @@ def show_page():
         
         Here it comes the idea **data shift**: to align the features in the similar shape, then we can check the interpretability with lime.     
         """
-        )
+    )
     st.write("## How we process it ")
-    
+
     st.markdown(
         """
         From the dataset description: we get that the ecg sample data is collected with the 125Hz freqency.    
@@ -38,15 +39,15 @@ def show_page():
         """
     )
     st.latex(r"N= frequency · \frac{60}{heart rate}")
-    
+
     st.markdown(
         """
           We can conclude: to cover a complete heartbeat period we may need ecg signals samples in [75, 125]. 
         """
     )
-    
-    st.image(st.session_state.images.get('ecg-model'), width=400)
-    
+
+    st.image(st.session_state.images.get("ecg-model"), width=400)
+
     st.markdown(
         """
         From the ecg signal chart, we can see that R wave peak is always(almost from the mit dataset) the highest signal.   
@@ -54,7 +55,7 @@ def show_page():
         In that case, when we know the important feature, we can compare the feature number with the aligned feature to know which period of the important feature belongs to.
         """
     )
-    
+
     st.markdown(
         """
         As we only need 75 - 125 features to cover a completed ecg period. We may have several R wave peak in our sample data.   
@@ -72,7 +73,7 @@ def show_page():
         
         *It's not a perfect solution but after applying to the shift data, we get a good enough performance of our model. So we applied this method to our modeling as preprocessing*  
         """
-        )
+    )
     st.write("## Comparsion models with shift and raw data")
     st.markdown(
         """
@@ -105,6 +106,8 @@ def show_page():
         If we have time we will try to implement the algorithm to have a professional data shift for ecg signal. 
         """
     )
-    # explain how to process the data shift and why. 
+    # explain how to process the data shift and why.
     # add link for a more reasonable way to do that
+
+
 # show_page()

@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 def show_page():
     st.header("Data Preprocessing")
 
@@ -97,7 +98,8 @@ def show_page():
                     </tr>
                 </tbody>
             </table>
-            """, unsafe_allow_html=True
+            """,
+            unsafe_allow_html=True,
         )
 
         st.write(
@@ -109,7 +111,7 @@ def show_page():
             **Note:** After testing various combinations, we have found that MinMaxScaler works best for our dataset.
             """
         )
-        
+
     with st.expander("Resampling Results"):
         st.write(
             """
@@ -154,7 +156,8 @@ def show_page():
                     </tr>
                 </tbody>
             </table>
-            """, unsafe_allow_html=True
+            """,
+            unsafe_allow_html=True,
         )
 
         st.write(

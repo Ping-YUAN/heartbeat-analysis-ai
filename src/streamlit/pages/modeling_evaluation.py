@@ -186,7 +186,7 @@ def show_page():
 
         show_cnn_multiple = st.checkbox("Show CNN multiple Model")
         if show_cnn_multiple:
-            st.write("## LSTM")
+            st.write("## CNN")
             show_cnn_multiple_architecture = st.checkbox(
                 "Show CNN multiple architecture"
             )
@@ -374,7 +374,7 @@ def show_page():
 
         show_cnn_binary = st.checkbox("Show CNN binary Model")
         if show_cnn_binary:
-            st.write("## LSTM")
+            st.write("## CNN")
             show_cnn_binary_architecture = st.checkbox("Show CNN binary architecture")
             if show_cnn_binary_architecture:
                 st.image(st.session_state.images.get("mit-cnn-architecture"))

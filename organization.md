@@ -11,6 +11,7 @@
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's name, and a short `-` delimited description, e.g.
     │                         `1.0-alban-data-exploration`.
+    ├── pipeline           <- Pipelines that wrapper the transformers and model we have trained
     │
     ├── references         <- Data dictionaries, manuals, links, and all other explanatory materials.
     │

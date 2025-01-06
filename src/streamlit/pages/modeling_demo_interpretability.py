@@ -118,7 +118,7 @@ def show_page():
     selected_data = st.selectbox(
         "Select an sample data:",
         options=[
-            f"{mit_test_data_idx}-{ 'Normal' if mit_test_data.iloc[mit_test_data_idx]['target'] < 1 else 'Abnormal'}-{ getHeartBeatReadableClass( mit_test_data.iloc[mit_test_data_idx]['target'])}"
+            f"{mit_test_data_idx}-{ 'Normal' if mit_test_data.iloc[mit_test_data_idx]['target'] < 1 else 'Abnormal(' +  getHeartBeatReadableClass( mit_test_data.iloc[mit_test_data_idx]['target']) + ')'}"
             for mit_test_data_idx in mit_test_data.index.tolist()
         ],  # Convert index to list for the dropdown
     )

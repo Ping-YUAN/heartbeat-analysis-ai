@@ -129,9 +129,9 @@ def show_page():
         selected_row = mit_test_data.loc[
             selected_index
         ]  # Retrieve the corresponding row
-        st.write(
-            f"### Selected Heartbeat type: {'Abnormal' if selected_row['target'] > 0 else 'Normal'} ({getHeartBeatReadableClass(selected_row['target'])})"
-        )
+        # st.write(
+        #     f"### Selected Heartbeat type: {'Abnormal' if selected_row['target'] > 0 else 'Normal'} ({getHeartBeatReadableClass(selected_row['target'])})"
+        # )
 
         mitModel = MitModelShiftWrapper(binary_model)
         single_ecg = mit_test_data.iloc[selected_index]

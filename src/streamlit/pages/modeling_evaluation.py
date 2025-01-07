@@ -108,12 +108,12 @@ def show_page():
             show_dnn_multiple_model_train = st.checkbox("show DNN multiple model train")
             if show_dnn_multiple_model_train:
                 st.image(
-                    st.session_state.images.get("mit-dnn-multiple-model-loss-by-epoch")
-                )
-                st.image(
                     st.session_state.images.get(
                         "mit-dnn-multiple-model-accuracy-by-epoch"
                     )
+                )
+                st.image(
+                    st.session_state.images.get("mit-dnn-multiple-model-loss-by-epoch")
                 )
             st.image(st.session_state.images.get("mit-dnn-multiple-confusion-matrix"))
 
@@ -153,12 +153,12 @@ def show_page():
             )
             if show_lstm_multiple_model_train:
                 st.image(
-                    st.session_state.images.get("mit-lstm-multiple-model-loss-by-epoch")
-                )
-                st.image(
                     st.session_state.images.get(
                         "mit-lstm-multiple-model-accuracy-by-epoch"
                     )
+                )
+                st.image(
+                    st.session_state.images.get("mit-lstm-multiple-model-loss-by-epoch")
                 )
             st.image(st.session_state.images.get("mit-lstm-multiple-confusion-matrix"))
 
@@ -196,12 +196,12 @@ def show_page():
             show_cnn_multiple_model_train = st.checkbox("show CNN multiplemodel train")
             if show_cnn_multiple_model_train:
                 st.image(
-                    st.session_state.images.get("mit-cnn-multiple-model-loss-by-epoch")
-                )
-                st.image(
                     st.session_state.images.get(
                         "mit-cnn-multiple-model-accuracy-by-epoch"
                     )
+                )
+                st.image(
+                    st.session_state.images.get("mit-cnn-multiple-model-loss-by-epoch")
                 )
             st.image(st.session_state.images.get("mit-cnn-multiple-confusion-matrix"))
 
@@ -302,13 +302,14 @@ def show_page():
             show_dnn_binary_model_train = st.checkbox("show DNN binary model train")
             if show_dnn_binary_model_train:
                 st.image(
-                    st.session_state.images.get("mit-dnn-binary-model-loss-by-epoch")
-                )
-                st.image(
                     st.session_state.images.get(
                         "mit-dnn-binary-model-accuracy-by-epoch"
                     )
                 )
+                st.image(
+                    st.session_state.images.get("mit-dnn-binary-model-loss-by-epoch")
+                )
+
             st.image(st.session_state.images.get("mit-dnn-binary-confusion-matrix"))
 
             st.write("Classification report over test set")
@@ -343,12 +344,12 @@ def show_page():
             show_lstm_binary_model_train = st.checkbox("show LSTM binary model train")
             if show_lstm_binary_model_train:
                 st.image(
-                    st.session_state.images.get("mit-lstm-binary-model-loss-by-epoch")
-                )
-                st.image(
                     st.session_state.images.get(
                         "mit-lstm-binary-model-accuracy-by-epoch"
                     )
+                )
+                st.image(
+                    st.session_state.images.get("mit-lstm-binary-model-loss-by-epoch")
                 )
             st.image(st.session_state.images.get("mit-lstm-binary-confusion-matrix"))
 
@@ -382,13 +383,14 @@ def show_page():
             show_cnn_binary_model_train = st.checkbox("show CNN binary model train")
             if show_cnn_binary_model_train:
                 st.image(
-                    st.session_state.images.get("mit-cnn-binary-model-loss-by-epoch")
-                )
-                st.image(
                     st.session_state.images.get(
                         "mit-cnn-binary-model-accuracy-by-epoch"
                     )
                 )
+                st.image(
+                    st.session_state.images.get("mit-cnn-binary-model-loss-by-epoch")
+                )
+
             st.image(st.session_state.images.get("mit-cnn-binary-confusion-matrix"))
 
             st.write("Classification report over test set")

@@ -86,7 +86,7 @@ def show_page():
         Macro Average f1 score for binary classification  
         | data type    | XGBoost | KNN  | DNN | LSTM | CNN | 
         |--------------|---------|------|-----|------|-----|
-        | raw data     | 0.85    | 0.84 | 0.93| O.92 | 0.95|
+        | raw data     | 0.85    | 0.93 | 0.93| O.92 | 0.95|
         | shifted data | 0.74    | 0.92 | 0.90| 0.88 | 0.95|
 
 

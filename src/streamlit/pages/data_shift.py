@@ -32,7 +32,7 @@ def show_page():
 
     st.markdown(
         """
-        From the dataset description: we get that the ecg sample data is collected with the 125Hz freqency.    
+        From the dataset description: we get that the ecg sample data is collected with the 125Hz freqency. (125 signals per second)   
         And a normal heartbeat rate(heart rate) from 60 to 100 beats per minute(bpm).    
         So we can calculate the number of ecg samples for one heartbeat by:   
       
@@ -61,8 +61,9 @@ def show_page():
         As we only need 75 - 125 features to cover a completed ecg period. We may have several R wave peak in our sample data.   
         We need to exclude the R wave peak which appear at beginning and ending part to ensure that we align a complete ecg period signal to the center that we want.   
         
-        The R wave duration around 0.06 - 0.12 seconds, if we calcluat it the R wave might appear at 6st signal. 
-        We only count the peak in range of [6, 160] to improve the accuracy of the data shift. 
+        The R wave duration around 0.06 - 0.12 seconds, and happend about 40%-50% process of entire heartbeat.   
+        If we calcluat it the R wave might appear around [30, 37].  
+        We only count the peak in range of [15, 150] to improve the accuracy of the data shift. 
         """
     )
     st.write("### how to choose the fix column for R wave peak")

@@ -2,7 +2,6 @@ numpy
 pandas
 scikit-learn
 matplotlib
-streamlit
 seaborn
 bokeh
 jupyterlab
@@ -20,3 +19,5 @@ pydot
 graphviz
 pytype
 watchdog
+streamlit==1.9.0
+protobuf<=3.20.3
